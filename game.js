@@ -16,8 +16,6 @@ function computerPlay(){
 
 //One Round of the game - Returns the outcome
 function Round(playerSelection,computerSelection){
-  playerSelection = playerSelection.toLowerCase();
-  playerSelection = playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1);
   playerPc = playerSelection + computerSelection;
 
   switch (playerPc) {
@@ -47,28 +45,18 @@ function Round(playerSelection,computerSelection){
     default:
       return "Error";
       break;
-    }
+  }
 }
 
 //Runs Round function until one side wins and displays the out come + the score
 function game(playerSelection){
     let RoundOutCome = Round(playerSelection,computerPlay());
-    console.log(RoundOutCome);
 
     if (RoundOutCome!="Error") {
-      //let txt = "Player played: "+playerSelection+" Computer played: "+computerSelection;
-      //let txt = "Player played: "+playerSelection+" Computer played: "+computerSelection;
-      console.log("Score Player: "+playerScore+" | Computer: "+computerScore);
       keepScore.innerHTML=`${playerScore}:${computerScore}`;
-      //Player: *** | Computer: ***
       gameLog1.innerHTML=`Player: *${playerSelection}* | Computer: *${computerSelection}*`;
-      //gameLog1.innerHTML=`Player: ${playerSelection}`;
-      //gameLog2.innerHTML=`Computer: ${computerSelection}`;
       outcome.innerHTML=RoundOutCome;
-
-
-  }
-
+    }
   if (playerScore == 5){
     outcome.innerHTML="*Player Wins The Game*";
     gameReset();
